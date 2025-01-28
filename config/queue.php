@@ -92,7 +92,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Failed Queue Jobs
+    | Failed Queue Career
     |--------------------------------------------------------------------------
     |
     | These options configure the behavior of failed queue job logging so you
