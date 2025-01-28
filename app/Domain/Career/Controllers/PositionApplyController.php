@@ -24,25 +24,26 @@ class PositionApplyController extends Controller
     public function store(Request $request, Position $position, CreatePositionApplicationAction $action): RedirectResponse
     {
         $rules = [];
-        if($position->position_specific_questions) {
-            foreach (json_decode($position->position_specific_questions) as $option) {
-                if ($option->required) {
-                    $rules[$option->name] = 'required';
+        if ($position->position_specific_questions) {
+            foreach ($position->position_specific_questions as $option) {
+                
+                if ($option["required"]) {
+                    $rules[$option["name"]] = 'required';
                 } else {
-                    $rules[$option->name] = 'nullable';
+                    $rules[$option["name"]] = 'nullable';
                 }
-                if ($option->format === 'input-text') {
-                    $rules[$option->name] .= '|string';
-                } elseif ($option->format === 'input-number') {
-                    $rules[$option->name] .= '|integer';
-                } elseif ($option->format === 'select') {
-                    $rules[$option->name] .= '|in:' . implode(',', $option->options);
+                if ($option["format"] === 'input-text') {
+                    $rules[$option["name"]] .= '|string';
+                } elseif ($option["format"] === 'input-number') {
+                    $rules[$option["name"]] .= '|integer';
+                } elseif ($option["format"] === 'select') {
+                    $rules[$option["name"]] .= '|in:' . $option["options"];
                 }
             }
         }
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string'],
-            'email' => ['required', 'email:rfc,dns', 'unique:applicants,email,NULL,id,position_id,'.$position->id],
+            'email' => ['required', 'email:rfc,dns', 'unique:applicants,email,NULL,id,position_id,' . $position->id],
             'mobile' => ['required', 'string'],
             'cv' => ['required', 'file', 'mimes:pdf,doc,docx,png'],
             'wage' => ['nullable', 'integer'],
@@ -51,7 +52,7 @@ class PositionApplyController extends Controller
             'birthdate' => ['nullable', 'date'],
             ...$rules
         ]);
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
 

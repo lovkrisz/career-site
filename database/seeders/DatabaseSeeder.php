@@ -52,10 +52,8 @@ class DatabaseSeeder extends Seeder
                     'required' => false,
 
 
-
                 ]
             ]),
-            'slug' => Position::generateSlug('Senior PHP Developer')
         ]);
         Position::create([
             'site_id' => 2,

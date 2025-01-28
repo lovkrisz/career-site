@@ -10,7 +10,7 @@ trait UniqueSlugTrait
 {
     public static function bootUniqueSlugTrait(): void
     {
-        static::saving(function (self $model): void {
+        static::creating(function (self $model): void {
             $model->slug = $model->generateSlug($model->title);
         });
     }
@@ -21,7 +21,7 @@ trait UniqueSlugTrait
         $counter = 1;
 
         while (static::where('slug', $slug)->exists()) {
-            $slug = Str::slug($title, '-').'-'.$counter;
+            $slug = Str::slug($title, '-') . '-' . $counter;
             $counter++;
         }
 

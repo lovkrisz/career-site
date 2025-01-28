@@ -8,6 +8,7 @@ use App\Filament\Resources\PositionResource\Pages;
 use App\Filament\Resources\PositionResource\RelationManagers;
 
 use Filament\Forms;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -28,35 +29,37 @@ class PositionResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')->required(),
-                Forms\Components\Textarea::make('description')->required(),
-                Forms\Components\Select::make('site_id')
-                    ->relationship('site', 'name')
-                    ->required(),
-                Repeater::make('position_specific_questions')
-                    ->schema([
-                        TextInput::make('name')->required(),
-                        TextInput::make("text")->label('Question')->required(),
-                        Select::make('format')
-                            ->options([
-                                'input-text' => 'Text',
-                                'select' => 'Select',
-                            ])
-                            ->required()->live(),
-                        TextInput::make('options')
-                            ->label('Options (comma separated)')
-                            ->visible(fn ($get): bool => $get('format') === 'select'),
+                Grid::make()->columns(1)->schema([
+                    Forms\Components\TextInput::make('title')->required(),
+                    Forms\Components\Textarea::make('description')->required(),
+                    Forms\Components\Select::make('site_id')
+                        ->relationship('site', 'name')
+                        ->required(),
+                    Repeater::make('position_specific_questions')
+                        ->schema([
+                            TextInput::make('name')->required(),
+                            TextInput::make("text")->label('Question')->required(),
+                            Select::make('format')
+                                ->options([
+                                    'input-text' => 'Text',
+                                    'select' => 'Select',
+                                ])
+                                ->required()->live(),
+                            TextInput::make('options')
+                                ->label('Options (comma separated)')
+                                ->visible(fn($get): bool => $get('format') === 'select'),
 
-                        Select::make('required')
-                            ->options([
-                                1 => 'Required',
-                                0 => 'Optional',
-                            ])
-                            ->required(),
-                    ])
-                    ->label('Position Specific Questions')
-                    ->minItems(0)
-                    ->collapsible()->grid('1'),
+                            Select::make('required')
+                                ->options([
+                                    1 => 'Required',
+                                    0 => 'Optional',
+                                ])
+                                ->required(),
+                        ])
+                        ->label('Position Specific Questions')
+                        ->minItems(0)
+                        ->collapsible()->grid('1'),
+                ]),
             ]);
     }
 
