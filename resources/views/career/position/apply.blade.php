@@ -84,22 +84,27 @@
                 </div>
 
                    @if($position->position_specific_questions)
-                    @foreach(json_decode($position->position_specific_questions) as $question)
+                    @foreach($position->position_specific_questions as $question)
+
                         <div class="mb-4">
-                            <label for="{{$question->name}}" class="block text-sm font-medium text-gray-700">{{ $question->text }} {{$question->required ? "*":""}}</label>
-                            @if($question->format == 'input-text')
-                                <input type="text" id="{{$question->name}}" name="{{$question->name}}" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            @elseif($question->format == 'select')
-                                <select id="{{$question->name}}" name="{{$question->name}}" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <label for="{{$question["name"]}}" class="block text-sm font-medium text-gray-700">{{ $question["text"] }} {{$question["required"] ? "*":""}}</label>
+                            @if($question["format"] == 'input-text')
+                                <input type="text" id="{{$question["name"]}}" name="{{$question["name"]}}" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            @elseif($question["format"] == 'select')
+                                @php
+                                    $options = explode(',', $question["options"]);
+                                @endphp
+                                <select id="{{$question["name"]}}" name="{{$question["name"]}}" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                     <option value="">Select an option</option>
-                                    @foreach($question->options as $option)
+
+                                    @foreach($options as $option)
                                         <option value="{{$option}}">{{$option}}</option>s
                                     @endforeach
                                 </select>
                             @endif
-                            @if($errors->has($question->name))
+                            @if($errors->has($question["name"]))
                                 <div class="text-sm text-red-700 ml-1" role="alert">
-                                    {{$errors->first($question->name)}}
+                                    {{$errors->first($question["name"])}}
                                 </div>
                             @endif
                         </div>

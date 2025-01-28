@@ -61,13 +61,13 @@ class DatabaseSeeder extends Seeder
             'site_id' => 2,
             'title' => 'Junior PHP Developer',
             'description' => 'We are looking for a Junior PHP Developer to join our team.',
-            'slug' => Position::generateSlug('Junior PHP Developer')
+
         ]);
         Position::create([
             'site_id' => 3,
             'title' => 'Senior Frontend Developer',
             'description' => 'We are looking for a Senior Frontend Developer to join our team.',
-            'slug' => Position::generateSlug('Senior Frontend Developer')
+
         ]);
 
 

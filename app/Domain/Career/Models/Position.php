@@ -2,6 +2,7 @@
 
 namespace App\Domain\Career\Models;
 
+use App\Domain\Career\Traits\UniqueSlugTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -9,6 +10,9 @@ use Str;
 
 class Position extends Model
 {
+
+    use UniqueSlugTrait;
+
 	protected $fillable = [
 		'site_id',
 		'title',
@@ -27,17 +31,5 @@ class Position extends Model
     public function applicants(): HasMany
     {
         return $this->hasMany(Applicant::class);
-    }
-    public static function generateSlug($title): string
-    {
-        $slug = Str::slug($title);
-        $originalSlg = $slug;
-        $counter = 1;
-
-        while(Position::where('slug', $slug)->exists()) {
-            $slug = "{$originalSlg}-{$counter}";
-            $counter++;
-        }
-        return $slug;
     }
 }
