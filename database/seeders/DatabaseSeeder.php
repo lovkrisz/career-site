@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Domain\Auth\Models\User;
@@ -9,7 +11,7 @@ use Illuminate\Database\Seeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class DatabaseSeeder extends Seeder
+final class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -24,13 +26,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Site::create([
-            'name' => 'Dunaföldvár'
+            'name' => 'Dunaföldvár',
         ]);
         Site::create([
-            'name' => 'Budapest'
+            'name' => 'Budapest',
         ]);
         Site::create([
-            'name' => 'Székesfehérvár'
+            'name' => 'Székesfehérvár',
         ]);
 
         Position::create([
@@ -51,8 +53,7 @@ class DatabaseSeeder extends Seeder
                     'name' => 'vue_experience',
                     'required' => false,
 
-
-                ]
+                ],
             ]),
         ]);
         Position::create([
@@ -67,7 +68,6 @@ class DatabaseSeeder extends Seeder
             'description' => 'We are looking for a Senior Frontend Developer to join our team.',
 
         ]);
-
 
     }
 }

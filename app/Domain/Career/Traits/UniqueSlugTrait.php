@@ -21,7 +21,7 @@ trait UniqueSlugTrait
         $counter = 1;
 
         while (static::where('slug', $slug)->exists()) {
-            $slug = Str::slug($title, '-') . '-' . $counter;
+            $slug = Str::slug($title, '-').'-'.$counter;
             $counter++;
         }
 
