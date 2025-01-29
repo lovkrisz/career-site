@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Domain\Career\Models;
+declare(strict_types=1);
 
+namespace App\Models\GoogleCalendar;
+
+use App\Models\Career\Applicant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Round2Meets extends Model
+final class Round2Meets extends Model
 {
     protected $fillable = [
         'applicant_id',

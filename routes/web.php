@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-use App\Domain\Career\Controllers\ApplicantController;
-use App\Domain\Career\Controllers\PositionApplyController;
-use App\Domain\Career\Controllers\PositionController;
+use App\Http\Controllers\Career\ApplicantController;
+use App\Http\Controllers\Career\PositionApplyController;
+use App\Http\Controllers\Career\PositionController;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
-use Spatie\GoogleCalendar\Event;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/teszt', function () {
-    Event::create([
-        'name' => 'A new event',
-        'startDateTime' => Carbon\Carbon::now(),
-        'endDateTime' => Carbon\Carbon::now()->addHour(),
-    ]);
+    $date = '2021-10-10';
+    $time = '10:00';
+    $interviewTime = Carbon::parse($date.' '.$time);
+    $endTime = $interviewTime->copy()->addHour();
+    dd($interviewTime->format('Y-m-d H:i').' - '.$endTime->format('Y-m-d H:i'));
 });
 
 Route::redirect('/login', '/admin/login')->name('login');

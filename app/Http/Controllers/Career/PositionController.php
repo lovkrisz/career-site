@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Career\Controllers;
+namespace App\Http\Controllers\Career;
 
-use App\Domain\Career\Models\Position;
 use App\Http\Controllers\Controller;
+use App\Models\Career\Position;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 

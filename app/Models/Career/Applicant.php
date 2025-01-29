@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Career\Models;
+namespace App\Models\Career;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

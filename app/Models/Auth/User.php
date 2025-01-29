@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Auth\Models;
+namespace App\Models\Auth;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
@@ -14,7 +14,7 @@ use Illuminate\Notifications\Notifiable;
 
 final class User extends Authenticatable implements FilamentUser
 {
-    /** @use HasFactory<\Database\Factories\Domain\Auth\Models\UserFactory> */
+    /** @use HasFactory<\Database\Factories\Auth\UserFactory> */
     use HasFactory, Notifiable;
 
     /**

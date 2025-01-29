@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources;
 
-use App\Domain\Career\Models\Position;
 use App\Filament\Resources\PositionResource\Pages;
+use App\Models\Career\Position;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Repeater;

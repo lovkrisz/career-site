@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
-    'default_auth_profile' => env('GOOGLE_CALENDAR_AUTH_PROFILE', 'service_account'),
+    'default_auth_profile' => env('GOOGLE_CALENDAR_AUTH_PROFILE', 'oauth'),
 
     'auth_profiles' => [
 
@@ -23,12 +25,12 @@ return [
             /*
              * Path to the json file containing the oauth2 credentials.
              */
-            'credentials_json' => storage_path('app/google-calendar/oauth-credentials.json'),
+            'credentials_json' => storage_path('app/google-calendar/credentials.json'),
 
             /*
              * Path to the json file containing the oauth2 token.
              */
-            'token_json' => storage_path('app/google-calendar/oauth-token.json'),
+            'token_json' => storage_path('app/google-calendar/token.json'),
         ],
     ],
 

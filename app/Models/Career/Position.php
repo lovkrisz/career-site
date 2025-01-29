@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Career\Models;
+namespace App\Models\Career;
 
-use App\Domain\Career\Traits\UniqueSlugTrait;
+use App\Http\Traits\UniqueSlugTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;

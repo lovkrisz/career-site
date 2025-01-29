@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Career\Mail;
+namespace App\Mail;
 
-use App\Domain\Career\Models\Applicant;
+use App\Models\Career\Applicant;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;

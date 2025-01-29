@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Livewire;
 
-use App\Domain\Career\Models\Position;
-use App\Domain\Career\Models\Site;
+use App\Models\Career\Position;
+use App\Models\Career\Site;
 use Illuminate\View\View;
 use Livewire\Component;
 

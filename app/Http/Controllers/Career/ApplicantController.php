@@ -2,28 +2,27 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Career\Controllers;
+namespace App\Http\Controllers\Career;
 
-use App\Domain\Career\Models\Applicant;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Career\Applicant;
+use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use View;
 
 final class ApplicantController extends Controller
 {
     public function downloadCV(Applicant $applicant): BinaryFileResponse
     {
 
-        $file = storage_path('app/private/' . $applicant->cv_url);
+        $file = storage_path('app/private/'.$applicant->cv_url);
         if (file_exists($file)) {
             return response()->download($file);
         }
         abort(404);
     }
 
-    public function interviewCalendar(): View
+    public function interviewCalendar(Applicant $applicant): View
     {
-        return view('applicant.interview-calendar');
+        return view('calendar.index', ['applicant' => $applicant]);
     }
 }

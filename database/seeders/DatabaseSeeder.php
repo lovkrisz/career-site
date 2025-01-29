@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Domain\Auth\Models\User;
-use App\Domain\Career\Models\Position;
-use App\Domain\Career\Models\Site;
+use App\Models\Auth\User;
+use App\Models\Career\Position;
+use App\Models\Career\Site;
 use Illuminate\Database\Seeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;

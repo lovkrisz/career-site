@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources;
 
-use App\Domain\Career\Actions\NotifyApplicantAction;
-use App\Domain\Career\Mail\ApplicantJudgementMail;
-use App\Domain\Career\Models\Applicant;
+use App\Actions\Career\NotifyApplicantAction;
 use App\Filament\Resources\ApplicantResource\Pages;
+use App\Models\Career\Applicant;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\Actions;
@@ -20,7 +19,6 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Support\Facades\Mail;
 
 final class ApplicantResource extends Resource
 {
@@ -83,7 +81,7 @@ final class ApplicantResource extends Resource
                                 ->icon('heroicon-m-arrow-down-tray')
                                 ->requiresConfirmation()
                                 ->url(
-                                    fn(Applicant $record) => route('applicants.download', $record),
+                                    fn (Applicant $record) => route('applicants.download', $record),
                                     shouldOpenInNewTab: true
                                 ),
                             Action::make('judgement')->label('Judgement')

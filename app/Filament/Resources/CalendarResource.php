@@ -1,20 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources;
 
-use App\Domain\Career\Models\Calendar;
 use App\Filament\Resources\CalendarResource\Pages;
-use App\Filament\Resources\CalendarResource\RelationManagers;
-
+use App\Models\GoogleCalendar\Calendar;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CalendarResource extends Resource
+final class CalendarResource extends Resource
 {
     protected static ?string $model = Calendar::class;
 

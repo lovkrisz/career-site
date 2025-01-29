@@ -1,14 +1,17 @@
 <?php
 
-use App\Domain\Career\Models\Applicant;
+declare(strict_types=1);
+
+use App\Models\Career\Applicant;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     public function up(): void
     {
-        Schema::create('round2_meets', function (Blueprint $table) {
+        Schema::create('round2_meets', function (Blueprint $table): void {
             $table->id();
             $table->foreignIdFor(Applicant::class)->constrained('applicants');
             $table->dateTime('selected_datetime');

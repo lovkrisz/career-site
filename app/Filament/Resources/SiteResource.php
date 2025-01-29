@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources;
 
-use App\Domain\Career\Models\Site;
 use App\Filament\Resources\SiteResource\Pages;
+use App\Models\Career\Site;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;

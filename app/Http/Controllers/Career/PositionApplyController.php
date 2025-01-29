@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Career\Controllers;
+namespace App\Http\Controllers\Career;
 
-use App\Domain\Career\Actions\CreatePositionApplicationAction;
-use App\Domain\Career\Models\Position;
+use App\Actions\Career\CreatePositionApplicationAction;
 use App\Http\Controllers\Controller;
+use App\Models\Career\Position;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
