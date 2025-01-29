@@ -6,6 +6,7 @@
 /storage/*.key
 /storage/pail
 /vendor
+/storage/app/google-calendar/*.json
 .env
 .env.backup
 .env.production

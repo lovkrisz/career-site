@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources;
 
+use App\Domain\Career\Actions\NotifyApplicantAction;
 use App\Domain\Career\Mail\ApplicantJudgementMail;
 use App\Domain\Career\Models\Applicant;
 use App\Filament\Resources\ApplicantResource\Pages;
@@ -82,7 +83,7 @@ final class ApplicantResource extends Resource
                                 ->icon('heroicon-m-arrow-down-tray')
                                 ->requiresConfirmation()
                                 ->url(
-                                    fn (Applicant $record) => route('applicants.download', $record),
+                                    fn(Applicant $record) => route('applicants.download', $record),
                                     shouldOpenInNewTab: true
                                 ),
                             Action::make('judgement')->label('Judgement')
@@ -133,14 +134,7 @@ final class ApplicantResource extends Resource
                                     $record->update([
                                         'status' => $data['status'],
                                     ]);
-                                    if ($data['status'] === 'hired') {
-                                        $mailStatus = 'Hired';
-                                    } elseif ($data['status'] === 'round_2') {
-                                        $mailStatus = 'Round 2';
-                                    } else {
-                                        $mailStatus = 'Rejected';
-                                    }
-                                    Mail::to($record->email)->send(new ApplicantJudgementMail($record, $mailStatus));
+                                    (new NotifyApplicantAction)->handle($record);
 
                                     Notification::make()
                                         ->title('Status has been edited')
