@@ -16,5 +16,11 @@ Hi {{ $applicant->name }}, <br>
 <p>
     <strong>Result:</strong> {{ $status }}
 </p>
+
+@if($url != "")
+    <p>
+        <a href="{{ $url }}">Click here to reserve time for your interview</a>
+    </p>
+@endif
 </body>
 </html>

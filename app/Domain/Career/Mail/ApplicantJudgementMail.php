@@ -18,7 +18,7 @@ final class ApplicantJudgementMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private Applicant $applicant, private string $status)
+    public function __construct(private Applicant $applicant, private string $status, private string $url)
     {
         //
     }
@@ -43,6 +43,7 @@ final class ApplicantJudgementMail extends Mailable
             with: [
                 'applicant' => $this->applicant,
                 'status' => $this->status,
+                'url' => $this->url,
             ],
         );
     }

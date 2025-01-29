@@ -26,6 +26,6 @@ Route::resource('position', PositionController::class)->only(['index', 'show'])-
     'position' => 'position:slug',
 ]);
 Route::get('/applicant/downloadCV/{applicant}', [ApplicantController::class, 'downloadCV'])->name('applicants.download')->middleware('auth');
-
 Route::get('/position/apply/{position}', [PositionApplyController::class, 'index'])->name('position.apply');
 Route::post('/position/apply/store/{position:slug}', [PositionApplyController::class, 'store'])->name('position.apply.store');
+Route::get('/applicant/interview/calendar/{applicant}', [ApplicantController::class, 'interviewCalendar'])->name('applicant.interview.calendar');
