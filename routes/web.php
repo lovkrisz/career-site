@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Http\Controllers\Career\ApplicantController;
 use App\Http\Controllers\Career\PositionApplyController;
 use App\Http\Controllers\Career\PositionController;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,4 +20,3 @@ Route::get('/applicant/downloadCV/{applicant}', [ApplicantController::class, 'do
 Route::get('/position/apply/{position}', [PositionApplyController::class, 'index'])->name('position.apply');
 Route::post('/position/apply/store/{position:slug}', [PositionApplyController::class, 'store'])->name('position.apply.store');
 Route::get('/applicant/interview/calendar/{applicant}', [ApplicantController::class, 'interviewCalendar'])->name('applicant.interview.calendar');
-
