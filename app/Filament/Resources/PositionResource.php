@@ -28,7 +28,7 @@ final class PositionResource extends Resource
             ->schema([
                 Grid::make()->columns(1)->schema([
                     TextInput::make('title')->required(),
-                    Forms\Components\Textarea::make('description')->required(),
+                    Forms\Components\RichEditor::make('description')->required(),
                     Select::make('site_id')
                         ->relationship('site', 'name')
                         ->required(),
@@ -44,7 +44,7 @@ final class PositionResource extends Resource
                                 ->live(),
                             TextInput::make('options')
                                 ->label('Options (comma separated)')
-                                ->visible(fn ($get): bool => $get('format') === 'select'),
+                                ->visible(fn($get): bool => $get('format') === 'select'),
 
                             Select::make('required')
                                 ->options([

@@ -21,6 +21,7 @@ final class Applicant extends Model
         'birthdate',
         'position_specific_questions',
         'status',
+        'interview_datetime',
     ];
 
     public function position(): BelongsTo

@@ -52,7 +52,6 @@ final class DatabaseSeeder extends Seeder
                     'options' => ['1', '2', '3', '4'],
                     'name' => 'vue_experience',
                     'required' => false,
-
                 ],
             ]),
         ]);

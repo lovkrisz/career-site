@@ -61,7 +61,7 @@ final class ApplicantResource extends Resource
                         TextEntry::make('status'),
                         TextEntry::make('created_at'),
                         TextEntry::make('residence')->placeholder('The applicant has not provided a residence.'),
-                        TextEntry::make('birthdate')->placeholder('The applicant has not provided a birthdate.'),
+                        TextEntry::make('birthdate')->date()->placeholder('The applicant has not provided a birthdate.'),
                     ])->columns(3),
                 ]),
                 Section::make('Introduction')->schema([
@@ -81,7 +81,7 @@ final class ApplicantResource extends Resource
                                 ->icon('heroicon-m-arrow-down-tray')
                                 ->requiresConfirmation()
                                 ->url(
-                                    fn (Applicant $record) => route('applicants.download', $record),
+                                    fn(Applicant $record) => route('applicants.download', $record),
                                     shouldOpenInNewTab: true
                                 ),
                             Action::make('judgement')->label('Judgement')

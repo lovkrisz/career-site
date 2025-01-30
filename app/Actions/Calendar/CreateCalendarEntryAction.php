@@ -14,15 +14,15 @@ final class CreateCalendarEntryAction
     /**
      * Handle the creation of a calendar entry for an applicant's interview.
      *
-     * @param  Applicant  $applicant  The applicant object.
-     * @param  string  $interviewDate  The date of the interview.
-     * @param  string  $interviewTime  The time of the interview.
+     * @param Applicant $applicant The applicant object.
+     * @param string $interviewDate The date of the interview.
+     * @param string $interviewTime The time of the interview.
      */
     public function handle(Applicant $applicant, string $interviewDate, string $interviewTime): void
     {
-        $interviewDateTime = Carbon::parse($interviewDate.' '.$interviewTime);
+        $interviewDateTime = Carbon::parse($interviewDate . ' ' . $interviewTime);
         $event = new Event();
-        $event->name = 'Round2 interview with '.$applicant->name;
+        $event->name = 'Round2 interview with ' . $applicant->name;
         $event->startDateTime = $interviewDateTime;
         $event->endDateTime = $interviewDateTime->copy()->addHour();
         $event->addAttendee([
@@ -39,13 +39,17 @@ final class CreateCalendarEntryAction
             'used_times' => '',
         ]);
 
+
         $usedTimes = array_merge(
             explode(',', $calendar->used_times ?? ''),
             [$interviewTime],
         );
-
+        // Using ltrim because if explode is empty it gives an empty item
         $calendar->update([
-            'used_times' => implode(',', array_unique($usedTimes)),
+            'used_times' => ltrim(implode(',', $usedTimes), ',')
+        ]);
+        $applicant->update([
+            'interview_datetime' => $interviewDateTime,
         ]);
     }
 }

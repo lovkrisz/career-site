@@ -23,6 +23,11 @@ final class ApplicantJudgementMail extends Mailable
         //
     }
 
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
     /**
      * Get the message envelope.
      */
