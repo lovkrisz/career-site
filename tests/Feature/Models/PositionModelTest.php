@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 use App\Models\Career\Position;
 use App\Models\Career\Site;
@@ -11,7 +12,7 @@ uses(RefreshDatabase::class);
 
 test('site returns belongs to relationship', function () {
     $site = Site::create([
-        "name" => "Test Site"
+        'name' => 'Test Site',
     ])->id;
     $position = Position::create([
         'site_id' => $site,
@@ -22,7 +23,7 @@ test('site returns belongs to relationship', function () {
 });
 test('Applicants returns HasMany instance', function () {
     $site = Site::create([
-        "name" => "Test Site"
+        'name' => 'Test Site',
     ])->id;
     $position = Position::create([
         'site_id' => $site,

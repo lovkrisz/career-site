@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 use App\Actions\Career\NotifyApplicantAction;
 use App\Mail\ApplicantJudgementMail;
@@ -14,7 +15,7 @@ uses(RefreshDatabase::class);
 it('sends an email to the hired applicant', function () {
     Mail::fake();
     $site = Site::create([
-        "name" => "Test Site"
+        'name' => 'Test Site',
     ])->id;
     $position = Position::create([
         'site_id' => $site,
@@ -38,7 +39,7 @@ it('sends an email to the hired applicant', function () {
 it('sends an email to the round2 applicant', function () {
     Mail::fake();
     $site = Site::create([
-        "name" => "Test Site"
+        'name' => 'Test Site',
     ])->id;
     $position = Position::create([
         'site_id' => $site,
@@ -62,7 +63,7 @@ it('sends an email to the round2 applicant', function () {
 it('sends an email to the rejected applicant', function () {
     Mail::fake();
     $site = Site::create([
-        "name" => "Test Site"
+        'name' => 'Test Site',
     ])->id;
     $position = Position::create([
         'site_id' => $site,

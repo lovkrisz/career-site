@@ -12,14 +12,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/teszt', function () {
-    $date = '2021-10-10';
-    $time = '10:00';
-    $interviewTime = Carbon::parse($date.' '.$time);
-    $endTime = $interviewTime->copy()->addHour();
-    dd($interviewTime->format('Y-m-d H:i').' - '.$endTime->format('Y-m-d H:i'));
-});
-
 Route::redirect('/login', '/admin/login')->name('login');
 
 Route::resource('position', PositionController::class)->only(['index', 'show'])->parameters([
@@ -29,3 +21,4 @@ Route::get('/applicant/downloadCV/{applicant}', [ApplicantController::class, 'do
 Route::get('/position/apply/{position}', [PositionApplyController::class, 'index'])->name('position.apply');
 Route::post('/position/apply/store/{position:slug}', [PositionApplyController::class, 'store'])->name('position.apply.store');
 Route::get('/applicant/interview/calendar/{applicant}', [ApplicantController::class, 'interviewCalendar'])->name('applicant.interview.calendar');
+

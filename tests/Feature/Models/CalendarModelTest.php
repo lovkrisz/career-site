@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 use App\Models\GoogleCalendar\Calendar;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -10,11 +11,10 @@ it('has available times', function () {
     $date = now()->format('Y-m-d');
     Calendar::create([
         'date' => $date,
-        'available_times' => "15:00, 16:00, 17:00"
+        'available_times' => '15:00, 16:00, 17:00',
     ]);
 
     expect(Calendar::hasAvailableTimes($date))->toBeTrue();
-
 
 });
 it('returns false when date does not exists', function () {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Http\Controllers\Career\PositionController;
 use App\Models\Career\Position;
 use App\Models\Career\Site;
@@ -16,7 +18,7 @@ test('index returns a view', function () {
 
 test('show method returns a view', function () {
     $site = Site::create([
-        "name" => "Test Site"
+        'name' => 'Test Site',
     ])->id;
     $position = Position::create([
         'site_id' => $site,

@@ -17,7 +17,7 @@ final class Calendar extends Model
     /**
      * Checks if there are any available times on a given date.
      *
-     * @param string $date the date in the format 'Y-m-d'
+     * @param  string  $date  the date in the format 'Y-m-d'
      * @return bool true if there are available times, false otherwise
      */
     public static function hasAvailableTimes(string $date): bool
@@ -27,8 +27,8 @@ final class Calendar extends Model
             // Get the available and used times and explode them into arrays
             $available_times = $times->available_times;
             $used_times = $times->used_times;
-            $used_times = explode(',', (string)$used_times);
-            $available_times = explode(',', (string)$available_times);
+            $used_times = explode(',', (string) $used_times);
+            $available_times = explode(',', (string) $available_times);
 
             // Calculate the difference between the two arrays
             $diff = array_diff($available_times, $used_times);
@@ -43,7 +43,7 @@ final class Calendar extends Model
     /**
      * Return the available times for a given date.
      *
-     * @param string $date the date in the format 'Y-m-d'
+     * @param  string  $date  the date in the format 'Y-m-d'
      * @return array the available times in the format ['09:00', '10:00', ...]
      */
     public static function getAvailableTimesOnDate(string $date): array
@@ -53,8 +53,8 @@ final class Calendar extends Model
             // Get the available and used times and explode them into arrays
             $available_times = $times->available_times;
             $used_times = $times->used_times;
-            $used_times = explode(',', (string)$used_times);
-            $available_times = explode(',', (string)$available_times);
+            $used_times = explode(',', (string) $used_times);
+            $available_times = explode(',', (string) $available_times);
 
             // Return the difference between the available times and the used times
             return array_values(array_diff($available_times, $used_times));

@@ -81,7 +81,7 @@ final class ApplicantResource extends Resource
                                 ->icon('heroicon-m-arrow-down-tray')
                                 ->requiresConfirmation()
                                 ->url(
-                                    fn(Applicant $record) => route('applicants.download', $record),
+                                    fn (Applicant $record) => route('applicants.download', $record),
                                     shouldOpenInNewTab: true
                                 ),
                             Action::make('judgement')->label('Judgement')

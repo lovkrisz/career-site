@@ -66,7 +66,9 @@ final class PositionResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('description')->getStateUsing(function ($record) {
+                    return strip_tags(mb_strimwidth($record->description, 0, 50, '...'));
+                }),
                 Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TextColumn::make('site.name')->label('Site Name'),
             ])

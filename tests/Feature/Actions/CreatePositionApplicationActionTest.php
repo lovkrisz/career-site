@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Actions\Career\CreatePositionApplicationAction;
 use App\Models\Career\Position;
 use App\Models\Career\Site;
@@ -10,7 +12,7 @@ uses(RefreshDatabase::class);
 it('creates a new applicant', function () {
 
     $site = Site::create([
-        "name" => "Test Site"
+        'name' => 'Test Site',
     ])->id;
     $position = Position::create([
         'site_id' => $site,
@@ -29,7 +31,7 @@ it('creates a new applicant', function () {
         'birthdate' => '1990-01-01',
 
     ];
-    $rules = json_encode([""]);
+    $rules = json_encode(['']);
     $action = new CreatePositionApplicationAction();
     $action->handle($validatedData, $rules, $position);
 

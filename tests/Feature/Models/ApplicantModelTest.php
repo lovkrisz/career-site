@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 use App\Models\Career\Applicant;
 use App\Models\Career\Position;
@@ -11,7 +12,7 @@ uses(RefreshDatabase::class);
 
 test('position returns belongs to relationship', function () {
     $site = Site::create([
-        "name" => "Test Site"
+        'name' => 'Test Site',
     ])->id;
     $position = Position::create([
         'site_id' => $site,

@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 use App\Http\Controllers\Career\PositionApplyController;
 use App\Models\Career\Position;
@@ -12,7 +13,7 @@ uses(RefreshDatabase::class);
 test('index returns view with position', function () {
     // Create a position with a slug
     $site = Site::create([
-        "name" => "Test Site"
+        'name' => 'Test Site',
     ])->id;
     $position = Position::create([
         'site_id' => $site,
@@ -29,7 +30,7 @@ test('index returns view with position', function () {
 });
 test('validation fails when required fields are missing', function () {
     $site = Site::create([
-        "name" => "Test Site"
+        'name' => 'Test Site',
     ])->id;
     $position = Position::create([
         'site_id' => $site,
@@ -50,4 +51,3 @@ test('validation fails when required fields are missing', function () {
 
     $response->assertSessionHasErrors(['name', 'email', 'mobile', 'cv']);
 });
-

@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Career;
 
 use App\Http\Controllers\Controller;
 use App\Models\Career\Position;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 final class PositionController extends Controller
@@ -26,5 +25,4 @@ final class PositionController extends Controller
     {
         return view('career.position.show', ['position' => $position]);
     }
-
 }
